@@ -1,0 +1,25 @@
+{
+    "port": "3001",
+    "url": {
+        "auth": {
+            "Register": "/api/user/v1/Register",
+            "Login": "/api/user/v1/Login",
+            "forget": "/api/user/v1/forgetPassword",
+            "reset": "/api/user/v1/resetPassword"
+        },
+        "category": {
+            "add": "/api/category/v1/add",
+            "update": "/api/category/v1/update",
+            "viewall": "/api/category/v1/viewall"
+        },
+        "product":{
+            "add":"/api/product/v1/add",
+            "update":"/api/product/v1/update",
+            "assign":"/api/product/v1/assign"
+
+        },
+        "error": {
+            "errorhandling": "/api/error/v1/errorhandling"
+        }
+    }
+}
