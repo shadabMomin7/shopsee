@@ -1,7 +1,7 @@
 let joi = require("joi");
 const { products } = require("../schema/productSchema");
 const { where, Op } = require("sequelize");
-const { Category } = require("../schema/cetagorySchema");
+const { Category } = require("../schema/categorySchema");
 const { product_category } = require("../schema/productCategorySchema");
 
 async function add(param, userdata) {
@@ -58,7 +58,7 @@ async function add(param, userdata) {
         product_cat.push({ p_id: products.id, c_id: Category.id });
     }
 
-    let p_cat = await product_category.bulkcreate(product_cat).catch((err) => {
+    let p_cat = await product_category.bulkCreate(product_cat).catch((err) => {
         return { error: err }
     });
     if (!p_cat || (p_cat && p_cat.error)) {

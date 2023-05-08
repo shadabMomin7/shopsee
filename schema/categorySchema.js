@@ -15,11 +15,18 @@ Category.init({
     p_id: {
         type: DataTypes.INTEGER,
         allowNull: true
-    }
+    },
+    created_by : {type : DataTypes.INTEGER,
+                  allowNull : false
+         },
+    updated_by: {type : DataTypes.INTEGER,
+                 allowNull : false
+          }     
+
 
 },
 
-    { tableName: "category", Modelname: "category", sequelize: sequelizecon }
+    { tableName: "category", Modelname: "Category", sequelize: sequelizecon }
 
 );
 

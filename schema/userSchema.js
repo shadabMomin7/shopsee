@@ -1,6 +1,7 @@
 let { Model, DataTypes, sequelizecon, Op } = require("../init/dbconfig");
 
 class User extends Model { }
+// 1 parameter init
 User.init({
     id: {
         type: DataTypes.INTEGER,
@@ -29,8 +30,8 @@ User.init({
         allowNull:true
     }
 },
-
-    { tableName: "user", ModelName: "user", sequelize: sequelizecon }
+    //2 parameter configurations
+    { tableName: "user", ModelName: "User", sequelize: sequelizecon }
 );
 
-module.exports = { User }   
+module.exports = { User };

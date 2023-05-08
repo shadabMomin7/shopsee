@@ -2,18 +2,22 @@ const { sequelizecon, QueryTypes } = require("../init/dbconfig");
 const { permission } = require("../schema/permissionSchema")
 let { decrypt } = require("../helper/securityHelper")
 
+
+// auth function 
 function auth(permission) {
     return async (req, res, next) => {
+        //checking param me data h ya nhi
         if (!permission) {
             return res.status(401).send({ error: "not autherized" });
         }
+        //
         let token = (req.headers && req.headers.token) ? req.headers.token : null;
         if (!token) {
             
-            return res.status(401).send({ error: "token not found" });
+            return res.status(404).send({ error: "token not found" });
         }
-
-        let data = await decrypt(token, "#@#@#").catch((err) => {
+        
+        let data = await decrypt(token,"shadab@123").catch((err) => {
             return { error: err }
         });
         if (!data || (data && data.error)) {

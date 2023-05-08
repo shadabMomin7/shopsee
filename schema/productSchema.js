@@ -70,7 +70,7 @@ products.init({
 
 },
 
-    { tableName: "products", modelName: "products", sequelize: sequelizecon }
+    { tableName: "product", modelName: "Products", sequelize: sequelizecon }
 
 );
 

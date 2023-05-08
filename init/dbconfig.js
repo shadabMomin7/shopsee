@@ -2,14 +2,10 @@ let { Sequelize, DataTypes, Model, QueryTypes, Op } = require("sequelize");
 
 let sequelizecon = new Sequelize("mysql://root:@localhost/pac");
 
-sequelizecon.authenticate()
-    .then((data) => {
-        console.log("connected to DB")
-    })
-    .catch((error) => {
-        console.log("not connected to DB")
-    });
+sequelizecon.authenticate().then((data) => {console.log("connected to PAC DB")})
+                           .catch((error) => {console.log("error on PAC Db connection")});
 
-module.exports = { DataTypes, Model, QueryTypes, Op, sequelizecon }
+module.exports = { DataTypes, Model, QueryTypes, Op, sequelizecon };
+
 
 

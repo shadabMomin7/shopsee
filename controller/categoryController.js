@@ -6,8 +6,9 @@ async function add(req, res) {
     });
 
     if (!data || (data && data.error)) {
+
         let error = (data && data.error) ? data.error : "internal server error"
-        console.log("error from controller", error)
+    console.log("error form cat controller", data.error)
         return res.status(500).send({ error: error });
     }
     return res.send({ data: data.data });

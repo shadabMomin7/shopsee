@@ -8,22 +8,20 @@ let config = require("config");
 let port = config.get("port")
 let app = express();
 
-
+//global middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use(cors({ origin: corsconfig })); 
 app.use(route);
 
-// app.use((error, req, res, next) => {
-//     console.log("URL", req.url)
-//     console.log("Param", req.body, req.params, req.query)
-//     console.log("Globel Error", error);
-
-//     return res.status(500).send({ error: (error && error.error)?error.error:"internal error" });
-// });
-// app.get("/test/",(req,res)=>{abd});
 
 
+//global error handler middleware
 app.use(globalErrorHandler);
+
+
+
+//server creation 
 app.listen(port, () => { console.log(`${port} running on`) });
  

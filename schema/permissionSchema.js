@@ -1,8 +1,8 @@
 
 let { sequelizecon, DataTypes, Model, Op } = require("../init/dbconfig");
 
-class permission extends Model { }
-permission.init({
+class Permission extends Model { }
+Permission.init({
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -15,8 +15,8 @@ permission.init({
         allowNull: false
     }
 },
-    { tableName: "permission", modelName: "permission", sequelize: sequelizecon }
+    { tableName: "permission", modelName: "Permission", sequelize: sequelizecon }
 
 );
 
-module.exports = { permission }
+module.exports = { Permission }

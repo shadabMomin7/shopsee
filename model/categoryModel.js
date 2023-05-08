@@ -1,21 +1,25 @@
-let { Category } = require("../schema/cetagorySchema");
+let { Category } = require("../schema/categorySchema");
 let joi = require("joi");
 
+
+//category add (APi)
+
 async function add(param, userdata) {
+      //joi validation 
     let validate = await addCategory(param).catch((err) => {
         return { error: err }
     });
     if (!validate || (validate && validate.error)) {
         return { error: validate.error }
     }
-
+    //check category with 
     if (param.p_id) {
         let cat = await Category.findOne({ where: { id: param.p_id } }).catch((err) => {
             return { error: err }
         });
         if (!cat || (cat && cat.error)) {
-            // console.log("error from categoryModel",cat.error)
-            return { error: "parent cat not found" }
+            
+            return { error: "category parent id not found" }
         }
     }
 
@@ -26,11 +30,34 @@ async function add(param, userdata) {
         return { error: err }
     });
     if (!create || (create && create.error)) {
-        return { error: " cat not added in DB" }
+        return { error: " error on category adding" }
     }
     return { data: create }
 }
 
+//joi validations add category 
+
+async function addCategory(param) {
+    let schema = joi.object({
+        name: joi.string().min(4).max(50).required(),
+        p_id: joi.number().min(1).required()
+    });
+
+    let validate = await schema.validateAsync(param, { abortEarly: false }).catch((err) => {
+        return { error: err }
+    });
+    if (!validate || (validate && validate.error)) {
+        let msg = [];
+        for (let i of validate.error.details) {
+            msg.push(i.message)
+        }
+        return { error: msg }
+    }
+    return { data: validate.data }
+
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//update category APi 
 async function update(param, userdata) {
 
     let verify = await updateCategory(param).catch((err) => {
@@ -46,7 +73,7 @@ async function update(param, userdata) {
             return { error: err }
         });
         if (!category || (category && category.error)) {
-            let error = (category && category.error) ? category.error : "data not found"
+            let error = (category && category.error) ? category.error : "category not found ! data not found"
             return { error, status: 404 }
         }
     }
@@ -61,21 +88,47 @@ async function update(param, userdata) {
         let error = (update || (update && update.error)) ? update.error : "error while updating"
         return { error, status: 505 }
     }
-    return { data: update, status: 200 }
+    return { data: "updated successfully",update, status: 200 }
 }
 
+//joi validation category upated
+
+async function updateCategory(param) {
+    let schema = joi.object({
+        id: joi.number().min(1).required(),
+        name: joi.string().min(4).max(50),
+        p_id: joi.number().min(1)
+    });
+
+    let valid = await schema.validateAsync(param, { abortEarly: false }).catch((err) => {
+        return { error: err }
+    });
+
+    if (!valid || (valid && valid.error)) {
+        let msg = [];
+        for (let i of valid.error.details) {
+            msg.push(i.message)
+        }
+        return { error: msg }
+    }
+    return { data: valid.data }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+ // view all category APi
+
 async function viewall(param) {
+    //joi validation
     let check = await viewCategory(param).catch((err) => {
         return { error: err }
     });
 
     if (!check || (check && check.error)) {
 
-        let error = (check && check.error) ? check.error : "internal server error";
-        console.log(error)
+        let error = (check && check.error) ? check.error : "provide proper data";
         return { error, status: 401 }
     }
-
+    
     let where = {}
     if (param.id) { where["id"] = param.id }
     if (param.name) { where["name"] = param.name }
@@ -113,48 +166,7 @@ async function viewall(param) {
     }
     return res;
 }
-
-async function addCategory(param) {
-    let schema = joi.object({
-        name: joi.string().min(4).max(50).required(),
-        p_id: joi.number().min(1).required()
-    });
-
-    let validate = await schema.validateAsync(param, { abortEarly: false }).catch((err) => {
-        return { error: err }
-    });
-    if (!validate || (validate && validate.error)) {
-        let msg = [];
-        for (let i of validate.error.details) {
-            msg.push(i.message)
-        }
-        return { error: msg }
-    }
-    return { data: validate.data }
-
-}
-
-async function updateCategory(param) {
-    let schema = joi.object({
-        id: joi.number().min(1).required(),
-        name: joi.string().min(4).max(50),
-        p_id: joi.number().min(1)
-    });
-
-    let valid = await schema.validateAsync(param, { abortEarly: false }).catch((err) => {
-        return { error: err }
-    });
-
-    if (!valid || (valid && valid.error)) {
-        let msg = [];
-        for (let i of valid.error.details) {
-            msg.push(i.message)
-        }
-        return { error: msg }
-    }
-    return { data: valid.data }
-}
-
+//joi validation view category 
 async function viewCategory(param) {
     let schema = joi.object({
         id: joi.number(),

@@ -4,12 +4,15 @@ let bcrypt = require('bcrypt');
 let { User_permission } = require("../schema/UserPermissionSchema")
 let { encrypt } = require("../helper/securityHelper")
 let { gmail } = require("../helper/mailer");
-let randomstring = require("randomstring");
+// let randomstring = require("randomstring");
 const { where } = require("sequelize");
+let Otp = require ("otp-generator");
 
 
 
-//function for resgitration
+
+
+// registratation (APi)
 
 async function Register(param) {
     //joi validation 
@@ -29,9 +32,10 @@ async function Register(param) {
      param.password = await bcrypt.hash(param.password, 10).catch((err) => {return { error: err }});
 
     if (!param.password || (param.password && param.password.error)) {
-        return { error: param.password.error }
+       let error = (param.password && param.password.error) ? param.password.error : "please try again. Internal server error";
+        return {error , status : 500}
     }
-    // register user
+    // register user on db
     let user = await User.create(param).catch((err) => {return { error: err }});
 
     if (!user || (user && user.error)) {
@@ -47,14 +51,14 @@ async function Register(param) {
             return { error: err }
         });
         if (del.error) {
-            return { error: "permission denied" }
+            return { error: "internal server error" , status : 500 }
         }
-
-        return { error: "internal server error" }
+        let error = (user_permission && user_permission.error) ? user_permission.error : "permission denied";
+        return {error , status : 401}
     }
 
     // return success
-    return { data: user }
+    return { data:"your registration successfully", user }
 }
 
 //joi validation .(register)
@@ -99,13 +103,13 @@ async function Login(param) {
         return { error: "wrong password" }
     }
      // generate token 
-    let token = await encrypt({ id: user.id }, "#@#@#").catch((err) => { return { error: err }});
+    let token = await encrypt({ id: user.id },"shadab@123").catch((err) => { return { error: err }});
 
     if (!token || (token && token.errror)) {
 
         return { error: "error in token" }
     }
-    // give token to user
+    // give token to user and update on db
     let updatedUser = await User.update({ token: token }, { where: { id: user.id } }).catch((err => { return { error: err } }));
 
     if (!updatedUser || (updatedUser && updatedUser.error)) {
@@ -136,7 +140,7 @@ async function checkLogin(param) {
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//function for forget password.
+//function for forget password (APi)
 
 async function forgetPassword(param) {
     //joi validation 
@@ -152,13 +156,15 @@ async function forgetPassword(param) {
         return { error: "user not found" }
     }
     // otp generate
-    let otp = randomstring.generate(6);
+    let otp = Otp.generate(6,{upperCaseAlphabets:false , lowerCaseAlphabets : false ,specialChars : false});
+    //otp encryption
     let encryptedOTP = await bcrypt.hash(otp, 10).catch((err) => {
         return { error: err }
     });
     if (!encryptedOTP || (encryptedOTP && encryptedOTP.error)) {
         return { error: "error in otp" }
     }
+    // encrypted otp save on db 
     user.otp = encryptedOTP
 
     let result = await user.save().catch((err) => {
@@ -167,11 +173,12 @@ async function forgetPassword(param) {
     // let result = await User.update({otp:otp},{where:{id:user.id}})
 
     if (!result || (result && result.error)) {
-        return { error: "internal server error" }
+        return { error: "otp not save" }
     }
-
+    //
+    console.log("generated otp",otp,encryptedOTP);
     let mailoption = {
-        from: "shadabmomin533@gmail.com",
+        from: "mominshadab533@gmail.com",
         to: user.email,
         subject: "Forgot Password",
         text: `your OTP is ${otp} for forgot password`
@@ -188,7 +195,7 @@ async function forgetPassword(param) {
 
     return { data: sendmail }
 }
-//joifunction verification.(fp)
+//joi validation .(forget password)
 async function verifyEmail(param) {
     let schema = joi.object({
         email: joi.string().min(4).max(150).required(),
@@ -207,51 +214,59 @@ async function verifyEmail(param) {
     }
     return { data: valid.data }
 }
-//resetPassword function.
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//resetPassword (APi)
 async function resetPassword(param) {
+    //joi validation
     let check = await verifyPassword(param).catch((err) => {
         return { error: err }
     });
     if (!check || (check && check.error)) {
         return { error: check.error }
     }
-
+    
+    //checking user by email id
     let user = await User.findOne({ where: { email: param.email } }).catch((err) => {
         return { error: err }
     });
     if (!user || (user && user.error)) {
-        return { error: "otp is not correct" }
+        return { error: "email id not registered" }
     }
-
-    let compare = await bcrypt.compare(user.otp, param.otp).catch((err) => {
+    
+    // checking otp correct or not
+    let compare = await bcrypt.compare(param.otp.toString(),user.otp).catch((err) => {
         return { error: err }
     });
     if (!compare || (compare && compare.error)) {
-        return { error: compare.error }
+        
+        return { error: "invalid otp " }
     }
-
+    
+    // password encryption and saving password
     param.password = await bcrypt.hash(param.password, 10).catch((err) => {
         return { error: err }
     });
     if (!param.password || (param.password && param.password.error)) {
         return { error: param.password.error }
     }
-
+    
+    // new password updating on db 
     let updatePassword = await User.update({ password: param.password, otp: "" }, { where: { otp: param.otp } }).catch((err) => {
         return { error: err }
     });
 
     if (!updatePassword || (updatePassword && updatePassword.error)) {
-        return { error: "password not matched" }
+        return { error: "error on updating password" }
     }
-
+    //return success
     return { data: "password reset successfully" }
 
 }
-//joifunction verification.(rp)
+//joi validation .(reset password)
 async function verifyPassword(param) {
     let schema = joi.object({
-        otp: joi.string().min(6).required(),
+        email : joi.string().required(),
+        otp: joi.number().min(6).required(),
         password: joi.string().min(8).required()
     });
 

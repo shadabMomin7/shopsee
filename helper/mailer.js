@@ -5,7 +5,7 @@ async function gmail(mailoption) {
         let trasnport = mail.createTransport({
             service: "gmail",
             auth: {
-                user: "shadabmomin533@gmail.com",
+                user: "mominshadab533@gmail.com",
                 pass: "bgjztjrqimgutfmo"
             }
         })
@@ -16,6 +16,6 @@ async function gmail(mailoption) {
             res(`otp send to your email ${mailoption.to}`)
         })
     })
-}
+};
 
-module.exports = { gmail }
+module.exports = { gmail };
