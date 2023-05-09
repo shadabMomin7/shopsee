@@ -16,12 +16,14 @@ Category.init({
         type: DataTypes.INTEGER,
         allowNull: true
     },
-    created_by : {type : DataTypes.INTEGER,
-                  allowNull : false
-         },
-    updated_by: {type : DataTypes.INTEGER,
-                 allowNull : false
-          }     
+    created_by: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    updated_by: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }
 
 
 },

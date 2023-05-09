@@ -4,6 +4,8 @@ const { where, Op } = require("sequelize");
 const { Category } = require("../schema/categorySchema");
 const { product_category } = require("../schema/productCategorySchema");
 
+// add product (APi)
+
 async function add(param, userdata) {
     let check = await addproduct(param).catch((err) => {
         return { error: err }
@@ -17,7 +19,7 @@ async function add(param, userdata) {
     });
 
     if (product_verify) {
-        let error = (product_verify && product_verify.error) ? product_verify.error : "product not found";
+        let error = (product_verify && product_verify.error) ? product_verify.error : "product already is there";
         return { error, status: 400 }
     }
     if (param.discount_type == 1) {
@@ -39,7 +41,7 @@ async function add(param, userdata) {
         return { error: err }
     });
     if (!product || (product && product.error)) {
-        let error = (!product || (product && product.error)) ? product.error : "can't create product";
+        let error = (!product || (product && product.error)) ? product.error : "error on product create , try again after sometime";
         return { error, status: 404 }
     }
     if (typeof (param.category) !== "object" || !Array.isArray(param.category)) {
@@ -98,6 +100,9 @@ async function addproduct(param) {
     }
     return { data: valid.data }
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//update product (APi)
 
 async function update(param, userdata) {
     let check = await updateproduct(param).catch((err) => {
@@ -166,8 +171,10 @@ async function updateproduct(param) {
     }
     return { data: valid.data }
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//check joi velidation.
+//assign product category (APi)
+
 async function assign(param) {
     let check = await assigncategory(param).catch((err) => {
         return { error: err }
@@ -199,7 +206,7 @@ async function assign(param) {
         return { error:"can't assign category"}
     }
 //create new product
-    let prod_cat = await product_category.bulkcreate(productCatgeory).catch((err) => {
+    let prod_cat = await product_category.bulkCreate(productCatgeory).catch((err) => {
         return { error: err }
     });
     if (!prod_cat || (prod_cat && prod_cat.error)) {

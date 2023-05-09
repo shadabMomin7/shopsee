@@ -173,7 +173,7 @@ async function viewCategory(param) {
         name: joi.string().min(4).max(100),
         p_id: joi.number(),
         page: joi.number(),
-        record: joi.number()
+        
     });
 
     let valid = await schema.validateAsync(param, { abortEarly: false }).catch((err) => {
