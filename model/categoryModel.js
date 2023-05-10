@@ -126,7 +126,7 @@ async function viewall(param) {
     if (!check || (check && check.error)) {
 
         let error = (check && check.error) ? check.error : "provide proper data";
-        return { error, status: 401 }
+        return { error, status: 404 }
     }
     
     let where = {}
@@ -142,8 +142,8 @@ async function viewall(param) {
         return { error: err }
     });
     if (!count || (count && count.error)) {
-        let error = (count && count.error) ? count.error : "internal server error"
-        return { error, status: 401 }
+        let error = (count && count.error) ? count.error : "unable to count category|Internal server error"
+        return { error, status: 500 }
     }
 
     let category = await Category.findAll({

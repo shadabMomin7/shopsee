@@ -234,30 +234,47 @@ async function assigncategory(param) {
     }
     return { data: valid.data }
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// view all product (APi)
 
-async function viewall(param) {
-    let check = await viewproduct(param).catch((err) => {
-        return { error: err }
-    });
-    if (!check || (check && check.error)) {
-        return { error: check.error }
-    }
+async function viewProduct(param){
+    let check = await checkViewProduct(param).catch((err)=>{return {error : err}});
+     if(!check || (check && check.error)){
+        let error = (check && check.error) ? check.error : "please provide proper data";
+         return {error, status : 400}
+     }
+
+     let where = {};
+     if(param.id){
+        where["id"] = param.id
+     }
+     if(param.name){
+        where["name"] = param.name
+     } 
+     if(param.price){
+        where["price"] = param.price
+     }
+
+     let record = (param.record) ? param.record : 10;
+     let page = (param.page) ? param.page : 1;
+     let offset = record * (page-1);
+
+     let count = await products.count({where : where}).catch((err)=>{return {error :err}});
+      if(!count || (count && count.error)){
+        let error = (count && count.error) ? count.error : "unable to count all products || try again after sometimes";
+         return {error,status : 500}
+      }
+      
 }
 
-async function viewproduct(param) {
+
+async function checkViewProduct(param) {
     let schema = joi.object({
         id: joi.number(),
         name: joi.string(),
         price: joi.number().min(1),
-        descreption: joi.string(),
-        details: joi.object(),
-        stock: joi.number(),
-        stock_alart: joi.string(),
-        discount_type: joi.string(),
-        discounted: joi.number(),
-        is_delete: joi.boolean(),
-        is_active: joi.boolean()
+        
     });
     let valid = await schema.validateAsync(param, { abortEarly: false }).catch((err) => {
         return { error: err }
