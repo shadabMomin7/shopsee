@@ -54,7 +54,6 @@ async function resetPassword(req, res) {
     let data = await user.resetPassword(req.body).catch((err) => {
         return { error: err }
     });
-    console.log(data)
 
     if (!data || (data && data.error)) {
         let error = (data || data && data.error) ? data.error : "internal server error";

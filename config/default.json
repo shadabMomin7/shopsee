@@ -20,6 +20,7 @@
         },
         "error": {
             "errorhandling": "/api/error/v1/errorhandling"
-        }
+        },
+        "testing" : {"demo" : "/upload"}
     }
 }

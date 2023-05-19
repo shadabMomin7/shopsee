@@ -175,8 +175,9 @@ async function forgetPassword(param) {
     if (!result || (result && result.error)) {
         return { error: "otp not save" }
     }
-    //
-    console.log("generated otp",otp,encryptedOTP);
+   
+    // mailer path 
+
     let mailoption = {
         from: "mominshadab533@gmail.com",
         to: user.email,
@@ -184,7 +185,7 @@ async function forgetPassword(param) {
         text: `your OTP is ${otp} for forgot password`
     }
 
-
+    //send mail 
     let sendmail = await gmail(mailoption).catch((err) => {
         return { error: err }
     });
@@ -192,9 +193,11 @@ async function forgetPassword(param) {
     if (!sendmail || (sendmail && sendmail.error)) {
         return { error: sendmail }
     }
-
+    
+    //resturn success
     return { data: sendmail }
 }
+
 //joi validation .(forget password)
 async function verifyEmail(param) {
     let schema = joi.object({
@@ -250,7 +253,7 @@ async function resetPassword(param) {
         return { error: param.password.error }
     }
     
-    // new password updating on db 
+    // new password updating on db and update otp value null
     let updatePassword = await User.update({ password: param.password, otp: "" }, { where: { otp: param.otp } }).catch((err) => {
         return { error: err }
     });

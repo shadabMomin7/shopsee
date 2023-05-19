@@ -19,7 +19,7 @@ User_permission.init({
 
 },
 
-    { tableName: "user_permission", ModelName: "User_permission", sequelize: sequelizecon }
+    { tableName: "user_permission", modelName: "User_permission", sequelize: sequelizecon }
 );
 
 module.exports = { User_permission }   

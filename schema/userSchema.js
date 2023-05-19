@@ -31,7 +31,7 @@ User.init({
     }
 },
     //2 parameter configurations
-    { tableName: "user", ModelName: "User", sequelize: sequelizecon }
+    { tableName: "user", modelName: "User", sequelize: sequelizecon }
 );
 
 module.exports = { User };

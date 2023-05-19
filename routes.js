@@ -6,7 +6,8 @@ let url = config.get("url");
 let route = express.Router();
 let { auth } = require("./middleware/authMiddleware");
 let product = require("./controller/productController");
-const { products } = require("./schema/productSchema");
+let demo = require ("./controller/demo");
+
 
 //auth routes APi
 route.post(url.auth.Register, userAuth.Register);
@@ -23,6 +24,10 @@ route.get(url.category.viewall, auth("view_product"), category.viewall);
 route.post(url.product.add, auth("add_product"),product.add);
 route.post(url.product.update,auth("update_product"),product.update);
 // route.get(url.product.viewall,auth("view_porduct"),product.viewall);
+
+
+//testing routes
+route.post(url.testing.demo,demo.uploadFile)
 
 
 // route.get(url.error.errorhandling, (req, res) => {

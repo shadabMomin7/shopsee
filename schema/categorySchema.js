@@ -28,7 +28,7 @@ Category.init({
 
 },
 
-    { tableName: "category", Modelname: "Category", sequelize: sequelizecon }
+    { tableName: "category", modelname: "Category", sequelize: sequelizecon }
 
 );
 
