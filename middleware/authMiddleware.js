@@ -16,11 +16,12 @@ function auth(permission) {
             
             return res.status(404).send({ error: "token not found" });
         }
-        
+        console.log("token",token)
         let data = await decrypt(token,"shadab@123").catch((err) => {
             return { error: err }
         });
         if (!data || (data && data.error)) {
+            console.log("error from middleware", data.error)
             return res.status(401).send({ error: "unautherized" });
         }
 

@@ -3,6 +3,7 @@ const { products } = require("../schema/productSchema");
 
 // add product controller (Api)
 async function add(req, res) {
+    
     let data = await product.add(req.body, req.userdata).catch((err) => {
         return { error: err }
     });

@@ -1,8 +1,8 @@
 let joi = require("joi");
-const { products } = require("../schema/productSchema");
+const { Products } = require("../schema/productSchema");
 const { where, Op } = require("sequelize");
 const { Category } = require("../schema/categorySchema");
-const { product_category } = require("../schema/productCategorySchema");
+const { Product_category } = require("../schema/productCategorySchema");
 
 // add product (APi)
 
@@ -41,7 +41,7 @@ async function add(param, userdata) {
         return { error: err }
     });
     if (!product || (product && product.error)) {
-        let error = (!product || (product && product.error)) ? product.error : "error on product create , try again after sometime";
+        let error = (!product || (product && product.error)) ? product.error : "error on product create,please try again after sometime";
         return { error, status: 404 }
     }
     if (typeof (param.category) !== "object" || !Array.isArray(param.category)) {
@@ -76,14 +76,14 @@ async function addproduct(param) {
         price: joi.string().min(1).required(),
         description: joi.string().required(),
         details: joi.object({
-            size: joi.string().min(10).max(250).required(),
+            size: joi.string().max(250).required(),
             colour: joi.string().required(),
             material: joi.string().required()
         }),
         stocks: joi.number().required(),
         stock_alart: joi.number().required(),
         discount_type: joi.string().required(),
-        discounted: joi.number().required(),
+        discounted: joi.number().required(),    
         is_active: joi.boolean().required(),
         category: joi.array()
     });
@@ -175,38 +175,40 @@ async function updateproduct(param) {
 
 //assign product category (APi)
 
-async function assign(param) {
-    let check = await assigncategory(param).catch((err) => {
+async function assignCategory(param) {
+    
+//joi validation
+    let check = await assignCategoryCheck(param).catch((err) => {
         return { error: err }
     });
     if (!check || (check && check.error)) {
         let error = (!check || (check && check.error)) ? check.error : "invalid detail"
-        return { error, status: 401 }
+        return { error, status: 400 }
     }
-//find product via id
-    let product = await products.findOne({ where: { id: param.id } }).catch((err) => {
+// find product is there on DB or not
+    let product = await Products.findOne({ where: { id: param.id } }).catch((err) => {
         return { error: err }
     });
     if (!product || (product && product.error)) {
-        let error = (!product || (product && product.error)) ? product.error : "product not found";
+        let error = (!product || (product && product.error)) ? product.error : "this product not found";
         return { error, status: 400 }
     }
-//apply for loop 
+//  listing product to category 
     let productCatgeory = []
     for (let record in param.category) {
-        productCatgeory.push({ p_id: products.id, c_id: Category.id }).catch((err) => {
+        productCatgeory.push({ p_id: Products.id, c_id: Category.id }).catch((err) => {
             return { error: err }
         });
     }
 //delete previous product data
-    let del = await product_category.destroy({ where: { id: p.id } }).catch((err) => {
+    let del = await Product_category.destroy({ where: { id: p.id } }).catch((err) => {
         return { error: err }
     });
     if (del.error) {
         return { error:"can't assign category"}
     }
 //create new product
-    let prod_cat = await product_category.bulkCreate(productCatgeory).catch((err) => {
+    let prod_cat = await Product_category.bulkCreate(productCatgeory).catch((err) => {
         return { error: err }
     });
     if (!prod_cat || (prod_cat && prod_cat.error)) {
@@ -216,7 +218,8 @@ async function assign(param) {
     return { data: product }
 }
 
-async function assigncategory(param) {
+//joi validation assign Category (Api)
+async function assignCategoryCheck(param) {
     let schema = joi.object({
         id: joi.number().required(),
         category: joi.array().required()
@@ -238,7 +241,7 @@ async function assigncategory(param) {
 
 // view all product (APi)
 
-async function viewProduct(param){
+async function viewAllProduct(param){
     let check = await checkViewProduct(param).catch((err)=>{return {error : err}});
      if(!check || (check && check.error)){
         let error = (check && check.error) ? check.error : "please provide proper data";
@@ -289,7 +292,9 @@ async function checkViewProduct(param) {
     return { data: valid.data }
 }
 
-module.exports = { add, update ,assign}
+
+module.exports = { add, update ,assignCategory,viewAllProduct};
+
 
 
 // if (param.discount_type === "amount") {

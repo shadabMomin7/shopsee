@@ -40,7 +40,7 @@ async function add(param, userdata) {
 async function addCategory(param) {
     let schema = joi.object({
         name: joi.string().min(4).max(50).required(),
-        p_id: joi.number().min(1).required()
+        p_id: joi.number().required()
     });
 
     let validate = await schema.validateAsync(param, { abortEarly: false }).catch((err) => {
@@ -73,12 +73,12 @@ async function update(param, userdata) {
             return { error: err }
         });
         if (!category || (category && category.error)) {
-            let error = (category && category.error) ? category.error : "category not found ! data not found"
+            let error = (category && category.error) ? category.error : "category not found | data not found"
             return { error, status: 404 }
         }
     }
 
-    param["created_by"] = userdata.id
+    // param["created_by"] = userdata.id
     param["updated_by"] = userdata.id
 
     let update = await Category.update(param, { where: { id: param.id } }).catch((err) => {
@@ -97,7 +97,7 @@ async function updateCategory(param) {
     let schema = joi.object({
         id: joi.number().min(1).required(),
         name: joi.string().min(4).max(50),
-        p_id: joi.number().min(1)
+        p_id: joi.number()
     });
 
     let valid = await schema.validateAsync(param, { abortEarly: false }).catch((err) => {

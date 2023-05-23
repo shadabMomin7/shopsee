@@ -3,7 +3,7 @@ let fs = require ("fs").promises
 
 async function parseFile(req,res,options= {}){
     let size = (options.size ) ? options.size : 1000*3;
-    let ext = (options.ext) ? options.ext : /jpg|png/ ; 
+    let ext = (options.ext) ? options.ext : /jpg|png|avif/ ; 
     let field = (options.field) ? options.field : null;
 
     if(!field ){
@@ -38,7 +38,7 @@ return new Promise ((resolve,reject)=>{
         resolve(true)
     })
  })
-}
+};
 
 
 async function singleFileUpload(destination , buffer){
@@ -48,7 +48,7 @@ async function singleFileUpload(destination , buffer){
      }
      return {data : true}
 
-}
+};
 
 
 module.exports = {parseFile , singleFileUpload};

@@ -15,7 +15,8 @@
         "product":{
             "add":"/api/product/v1/add",
             "update":"/api/product/v1/update",
-            "assign":"/api/product/v1/assign"
+            "assign":"/api/product/v1/assign",
+            "product_upload_image" : "/api/product/v1/upload"
 
         },
         "error": {
