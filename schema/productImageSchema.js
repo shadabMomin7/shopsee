@@ -23,7 +23,7 @@ ProductImage.init({
         }
 
 },
-        { tableName: "product_image", modelName: "Product", sequelize: sequelizecon }
+        { tableName: "product_image", modelName: "ProductImage", sequelize: sequelizecon }
 )
 
 

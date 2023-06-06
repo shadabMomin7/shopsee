@@ -37,7 +37,7 @@ async function hash(data,salt=10){
          return {error , status : 500}
 
     }
-    return {data : encrypt}
+    return encrypt
 
 }
 //comparing 
@@ -47,7 +47,7 @@ async function compare(data,encryptData){
         let error = (check && check.error) ? check.error : "Invalid data, bad request";
          return {error , status : 400}
      }
-     return{data : check}
+     return check
 }
 
 

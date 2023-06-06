@@ -2,6 +2,7 @@ let {ProductImage} =require ("../schema/productImageSchema");
 let joi = require ("joi");
 let file= require ("../helper/file");
 let {auth} = require ("../middleware/authMiddleware");
+let fs = require("fs").promises
 
 
 //upload image (Api)
@@ -58,6 +59,58 @@ async function checkPhotoUpload(param){
      }
      return {data : valid}
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//delete photos Api
+
+async function deletePhoto(param){
+    //joi validation
+    let check = await checkDeletePhoto(param).catch((err)=>{return {error : err}});
+     if(!check || (check && check.error)){
+        let error = (check && check.error) ? check.error : "invalid details";
+        return {error , status : 400}
+     }
+     //find product || if not found return 
+     let findProduct = await ProductImage.findOne({where : {p_id : param.p_id , id : param.id}}).catch((err)=>{return {error : err}});
+      if(!findProduct){
+        return {error : "product image not found" , status : 404}
+      }
+       // 
+      fileDestination = "E:/shadab project recover/public/upload/";
+      fileName = ProductImage.image_url;
+
+      let fsUnlink = await fs.fsUnlink(fileDestination + fileName).catch((err)=>{return {error : err}});
+       if(!fsUnlink || (fsUnlink && fsUnlink.error)){
+        let error = (fsUnlink && fsUnlink.error) ? fsUnlink.error : "unable to delete photo | internal server error";
+         return {error, status : 500}
+       }
+
+       let removeFromDb = await ProductImage.destroy({where : {id : findProduct.id}}).catch ((err)=>{return {error : err}});
+        if(! removeFromDb || (removeFromDb && removeFromDb.error)){
+            let error = (removeFromDb && removeFromDb.error) ? removeFromDb.error : " error on deleting on database | internal server error";
+             return {error, status : 500}
+        }
+        return {data : "product deleted successfully"}
+}
+
+
+///delete photo joi validation/////////
+async function checkDeletePhoto(param){
+    let schema = joi.object({
+                             id : joi.number().required(),
+                             p_id : joi.number().required
+    })
+
+    let valid = await schema.validateAsync(param,{abortEarly : false}).catch((err)=>{return {error : err}});
+     if(!valid || (valid && valid.error)){
+        let msg = [];
+        for(let i of valid.error.details){
+          msg.push(i.message)
+        }
+        return {error : msg}
+     }
+     return {data : valid}
+
+}
 
 module.exports = {photoUpload};

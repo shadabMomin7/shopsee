@@ -12,7 +12,7 @@ async function add(param, userdata) {
     if (!validate || (validate && validate.error)) {
         return { error: validate.error }
     }
-    //check category with 
+    //check category with p_id
     if (param.p_id) {
         let cat = await Category.findOne({ where: { id: param.p_id } }).catch((err) => {
             return { error: err }
@@ -86,7 +86,7 @@ async function update(param, userdata) {
     });
     if (!update || (update && update.error)) {
         let error = (update || (update && update.error)) ? update.error : "error while updating"
-        return { error, status: 505 }
+        return { error, status: 500 }
     }
     return { data: "updated successfully",update, status: 200 }
 }
@@ -126,7 +126,7 @@ async function viewall(param) {
     if (!check || (check && check.error)) {
 
         let error = (check && check.error) ? check.error : "provide proper data";
-        return { error, status: 404 }
+        return { error, status: 400}
     }
     
     let where = {}
@@ -154,8 +154,8 @@ async function viewall(param) {
         return { error: err }
     });
     if (!category || (category && category.error)) {
-        let error = (category && category.error) ? category.error : "internal server error"
-        return { error, status: 401 }
+        let error = (category && category.error) ? category.error : "internal server error";
+        return { error, status: 500 }
     }
 
     let res = {

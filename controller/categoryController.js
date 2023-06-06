@@ -2,7 +2,7 @@ let category = require("../model/categoryModel");
 
 
 
-// category add controller (Api)
+// category add controller
 
 async function add(req, res) {
     let data = await category.add(req.body, req.userdata).catch((err) => {
@@ -17,7 +17,7 @@ async function add(req, res) {
     return res.send({ data: data.data });
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// category update controller (Api)
+// category update controller 
 
 async function update(req, res) {
     let data = await category.update(req.body, req.userdata).catch((err) => {
@@ -31,7 +31,7 @@ async function update(req, res) {
     return res.send({ data: data.data });
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//  category viewAll cantroller (APi)
+//  category viewAll cantroller 
 
 async function viewall(req, res) {
     let data = await category.viewall(req.query, req.userdata).catch((err) => {

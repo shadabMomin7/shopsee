@@ -14,7 +14,7 @@ async function add(param, userdata) {
         let error = (check && check.error) ? check.error : "check details";
         return { error, status: 400 }
     }
-    let product_verify = await products.findOne({ where: { name: param.name }, raw: true }).catch((err) => {
+    let product_verify = await Products.findOne({ where: { name: param.name }, raw: true }).catch((err) => {
         return { error: err }
     });
 
@@ -37,7 +37,7 @@ async function add(param, userdata) {
     param["updated_by"] = userdata.id
 
 
-    let product = await products.create(param).catch((err) => {
+    let product = await Products.create(param).catch((err) => {
         return { error: err }
     });
     if (!product || (product && product.error)) {
@@ -57,7 +57,7 @@ async function add(param, userdata) {
 
     let product_cat = [];
     for (let record of cat) {
-        product_cat.push({ p_id: products.id, c_id: Category.id });
+        product_cat.push({ p_id: product.id, c_id: Category.id });
     }
 
     let p_cat = await product_category.bulkCreate(product_cat).catch((err) => {
@@ -263,11 +263,21 @@ async function viewAllProduct(param){
      let page = (param.page) ? param.page : 1;
      let offset = record * (page-1);
 
-     let count = await products.count({where : where}).catch((err)=>{return {error :err}});
+     let count = await Products.count({where : where}).catch((err)=>{return {error :err}});
       if(!count || (count && count.error)){
         let error = (count && count.error) ? count.error : "unable to count all products || try again after sometimes";
          return {error,status : 500}
       }
+
+      let findProduct = await Products.findAll( { where : where , limit : record , offset : offset}).catch((error)=>{return {error}});
+       if(! findProduct || (findProduct && findProduct.error)){
+        let error = (findProduct && findProduct.error) ? findProduct.error : "internal server error | product not found";
+         return {error , status : 500}
+       }
+
+       let res = { data : findProduct , total : count , page : page , record : record};
+
+       return res
       
 }
 

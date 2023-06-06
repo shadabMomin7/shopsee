@@ -12,7 +12,7 @@ async function add(req, res) {
         let status = (data && data.status) ? data.status : 500;
         return res.status(status).send({ error });
     }
-    let status = (data && data.status) ? data.status : 201;
+    let status = (data && data.status) ? data.status : 200;
     return res.status(status).send({ data: data.data })
 }
 //////////////////////////////////////////////////////////////////////////////////////////

@@ -16,7 +16,7 @@ function auth(permission) {
             
             return res.status(404).send({ error: "token not found" });
         }
-        console.log("token",token)
+        // console.log("token",token)
         let data = await decrypt(token,"shadab@123").catch((err) => {
             return { error: err }
         });
@@ -46,7 +46,7 @@ function auth(permission) {
             return res.status(401).send({ error: "access denied" });
         }
         
-        req.userdata = { id:user[0].id, name: user[0].name, permissions: permission }
+        req.userdata = { id:user[0].id, name: user[0].name, permissions: permissions }
         next();
     }
 }
