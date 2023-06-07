@@ -3,9 +3,11 @@ let joi = require ("joi");
 let file= require ("../helper/file");
 let {auth} = require ("../middleware/authMiddleware");
 let fs = require("fs").promises
+let config = require ("config");
+let fileDestination = config.get("FilesPath");
 
 
-//upload image (Api)
+//  product image upload(Api)
 async function photoUpload(param,files,userdata){
     //joi validation
     let check = await checkPhotoUpload(param).catch((err)=>{return {error : err}});
@@ -16,8 +18,6 @@ async function photoUpload(param,files,userdata){
     let not_upload=[];
     let bulkImage=[];
     
-    
-
     for(let i of files){
 
         let fileDestination = "E:/shadab project recover/public/upload/";
@@ -61,7 +61,7 @@ async function checkPhotoUpload(param){
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//delete photos Api
+//product image delete photos Api
 
 async function deletePhoto(param){
     //joi validation
@@ -76,20 +76,21 @@ async function deletePhoto(param){
         return {error : "product image not found" , status : 404}
       }
        // 
-      fileDestination = "E:/shadab project recover/public/upload/";
-      fileName = ProductImage.image_url;
-
-      let fsUnlink = await fs.fsUnlink(fileDestination + fileName).catch((err)=>{return {error : err}});
+      
+      
+       // delete file from system 
+      let fsUnlink = await fs.fsUnlink(fileDestination + findProduct.image_url).catch((err)=>{return {error : err}});
        if(!fsUnlink || (fsUnlink && fsUnlink.error)){
         let error = (fsUnlink && fsUnlink.error) ? fsUnlink.error : "unable to delete photo | internal server error";
          return {error, status : 500}
        }
-
+       // delete from data base
        let removeFromDb = await ProductImage.destroy({where : {id : findProduct.id}}).catch ((err)=>{return {error : err}});
         if(! removeFromDb || (removeFromDb && removeFromDb.error)){
-            let error = (removeFromDb && removeFromDb.error) ? removeFromDb.error : " error on deleting on database | internal server error";
+            let error = (removeFromDb && removeFromDb.error) ? removeFromDb.error : " error on deleting from database | internal server error";
              return {error, status : 500}
         }
+        // return deleted msg
         return {data : "product deleted successfully"}
 }
 
@@ -113,4 +114,4 @@ async function checkDeletePhoto(param){
 
 }
 
-module.exports = {photoUpload};
+module.exports = {photoUpload, deletePhoto};

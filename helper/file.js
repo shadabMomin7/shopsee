@@ -45,7 +45,6 @@ return new Promise ((resolve,reject)=>{
  })
 };
 
-+
 async function singleFileUpload(destination , buffer){
     let file = await fs.writeFile(destination,buffer).catch((err)=>{return {error : err}});
      if(file && file.error){

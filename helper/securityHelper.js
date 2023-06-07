@@ -20,6 +20,7 @@ function decrypt(data, key) {
     return new Promise((res,rej) => {
         jwt.verify(data,key, (err,data) => {
             if (err) { 
+                console.log(err)
                 rej(err) 
             }
             res(data)

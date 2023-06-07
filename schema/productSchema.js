@@ -17,19 +17,19 @@ Products.init({
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    description: {
+    discription: {
         type: DataTypes.STRING,
         allowNull: false
     },
     details: {
-        type: DataTypes.TEXT,
+        type: DataTypes.JSON,
         allowNull: true
     },
     stocks: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    stock_alart: {
+    stocks_alert: {
         type: DataTypes.STRING,
         allowNull: false
     },

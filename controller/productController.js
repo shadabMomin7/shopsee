@@ -45,6 +45,19 @@ async function assign(req, res) {
     let status = (data && data.status) ? data.status : 200;
     return res.status(status).send({ data: data.data });
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// viewAll category controller (Api)
+
+async function viewall(req,res){
+    let data = await product.viewAllProduct(req.body,req.userdata).catch((err)=>{return {error : err}});
+     if(!data || (data && data.error)){
+        let error = (data && data.error) ? data.error : "internal server error";
+         let status = (data && data.status) ? data.status : 500;
+          return res.status(status).send({error})  
+     }
+     return res.status(200).send({data : data.data})
+
+}
 
 
-module.exports = { add, update, assign }
+module.exports = { add, update, assign, viewall }

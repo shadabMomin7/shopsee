@@ -57,10 +57,10 @@ async function add(param, userdata) {
 
     let product_cat = [];
     for (let record of cat) {
-        product_cat.push({ p_id: product.id, c_id: Category.id });
+        product_cat.push({ p_id: Products.id, c_id: Category.id });
     }
 
-    let p_cat = await product_category.bulkCreate(product_cat).catch((err) => {
+    let p_cat = await Product_category.bulkCreate(product_cat).catch((err) => {
         return { error: err }
     });
     if (!p_cat || (p_cat && p_cat.error)) {
@@ -74,17 +74,17 @@ async function addproduct(param) {
     let schema = joi.object({
         name: joi.string().min(4).max(50).required(),
         price: joi.string().min(1).required(),
-        description: joi.string().required(),
+        discription: joi.string().required(),
         details: joi.object({
             size: joi.string().max(250).required(),
             colour: joi.string().required(),
             material: joi.string().required()
         }),
         stocks: joi.number().required(),
-        stock_alart: joi.number().required(),
-        discount_type: joi.string().required(),
-        discounted: joi.number().required(),    
-        is_active: joi.boolean().required(),
+        stocks_alert: joi.string().required(),
+        discount_type : joi.string(),   
+        discounted: joi.number(),    
+        is_active: joi.boolean(),
         category: joi.array()
     });
 
@@ -201,7 +201,7 @@ async function assignCategory(param) {
         });
     }
 //delete previous product data
-    let del = await Product_category.destroy({ where: { id: p.id } }).catch((err) => {
+    let del = await Product_category.destroy({ where: { id: param.id } }).catch((err) => {
         return { error: err }
     });
     if (del.error) {

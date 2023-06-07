@@ -7,28 +7,32 @@ let route = express.Router();
 let { auth } = require("./middleware/authMiddleware");
 let product = require("./controller/productController");
 // let demo = require ("./controller/demo");
-let {productImageUpload} = require ("./controller/productImageController")
+let image = require ("./controller/productImageController")
 
 
-//auth routes APi
+//auth (routes)
 route.post(url.auth.Register, userAuth.Register);
 route.post(url.auth.Login, userAuth.Login);
 route.get(url.auth.forget, userAuth.forgetPassword);
 route.get(url.auth.reset, userAuth.resetPassword);
 
-//category Routes APi
+//category (Routes)
 route.post(url.category.add, auth("add_category"), category.add);
 route.put(url.category.update, auth("update_category"), category.update);
 route.get(url.category.viewall, auth("viewall_category"), category.viewall);
 
-//products Routes Api 
+//products (Routes)
 route.post(url.product.add, auth("add_product"),product.add);
 route.post(url.product.update,auth("update_product"),product.update);
 route.get(url.product.viewall,auth("viewall_porduct"),product.viewall);
+route.post(url.product.assign , auth("assign_category"),product.assign)
 
 
-// product image upload (Api)
-route.post(url.product.product_upload_image,productImageUpload);
+
+// product image (routes)
+route.post(url.product.product_upload_image,auth("add_product_image"),image.productImageUpload);
+route.delete(url.product.product_image_delete ,auth("update_product"),image.productImageDelete);
+
 
 
 
