@@ -1,0 +1,11 @@
+post http://localhost:3001/api/v1/product/viewall HTTP/1.1
+
+####
+
+GET  http://localhost:3001/api/v1/product/viewall HTTP/1.1
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImlhdCI6MTY4NjU3Nzk2OH0.B4xjs0JfVl2a_Ql_SBwulTmDoeM5blVOV1SQIz6Y8T4
+Origin:http://abc.com 
+
+
+
+

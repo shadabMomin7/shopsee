@@ -23,6 +23,7 @@
     "nodemailer": "^6.9.1",
     "otp-generator": "^4.0.1",
     "randomstring": "^1.2.3",
-    "sequelize": "^6.29.3"
+    "sequelize": "^6.29.3",
+    "winston": "^3.9.0"
   }
 }

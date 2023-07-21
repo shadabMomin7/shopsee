@@ -13,8 +13,16 @@ Products.init({
         type: DataTypes.STRING,
         allowNull: false
     },
-    price: {
-        type: DataTypes.INTEGER,
+    base_price: {
+        type: DataTypes.FLOAT,
+        allowNull: false
+    },
+    gst_on_base_price: {
+        type: DataTypes.FLOAT,
+        allowNull: false
+    },
+    base_price_with_gst: {
+        type: DataTypes.FLOAT,
         allowNull: false
     },
     discription: {
@@ -22,8 +30,8 @@ Products.init({
         allowNull: false
     },
     details: {
-        type: DataTypes.JSON,
-        allowNull: true
+        type: DataTypes.STRING,
+        allowNull: false
     },
     stocks: {
         type: DataTypes.INTEGER,
@@ -38,16 +46,46 @@ Products.init({
         allowNull: true
     },
     discount_type: {
-        type: DataTypes.STRING,
+        type: DataTypes.BOOLEAN,
+        allowNull: true
+    },
+    Gst: {
+        type: DataTypes.FLOAT,
         allowNull: false
     },
-    discounted: {
+
+    discount_price: {
         type: DataTypes.FLOAT,
+        allowNull: true
+    },
+    discount_percentage: {
+        type: DataTypes.FLOAT,
+        allowNull: true
+    },
+    gst_on_discount: {
+        type: DataTypes.FLOAT,
+        allowNull: true
+    },
+    discount_with_gst: {
+        type: DataTypes.FLOAT,
+        allowNull: true
+    },
+    final_gst: {
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     price_after_discount: {
         type: DataTypes.FLOAT,
+        allowNull: true
+    },
+    total_amount: {
+        type: DataTypes.FLOAT,
         allowNull: false
+    },
+    slug: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
     },
     is_deleted: {
         type: DataTypes.BOOLEAN,
@@ -60,11 +98,11 @@ Products.init({
         defaultValue: true
     },
     created_by: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false
     },
     updated_by: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false
     }
 

@@ -25,11 +25,13 @@ async function productImageUpload (req,res){
      return res.status(200).send({data:data.data})
 
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// product image delete controller
 async function productImageDelete(req,res){
     let data = await deletePhoto(req.body , req.userdata).catch((err)=>{return {error :err}});
      if(! data || (data && data.error)){
+        console.log("errororor from conterorller" , data.error)
         let error = (data && data.error) ? data.error : "internal server error ";
         let status = (data && data.status) ? data.status : 500;
         return res.status(status).send({error})

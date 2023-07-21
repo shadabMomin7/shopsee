@@ -1,17 +1,15 @@
 let user = require("../model/userModel");
+let {logger} = require("../helper/log");
 
 
 // register controller 
 
 async function Register(req, res) {
-    let data = await user.Register(req.body).catch((err) => {
-        return { error: err }
-    });
-
+    let data = await user.Register(req.body).catch((err) => { return { error: err }});
     if (!data || (data && data.error)) {
-
         let error = data.error ? data.error : "Internal Server Error";
-        console.log(error)
+        console.log("er",error)
+        logger("error",`Register controller error : ${error}`)
         return res.status(500).send({ error })
     }
     return res.status(200).send({ data: data.data });
@@ -25,8 +23,9 @@ async function Login(req, res) {
     });
 
     if (!data || (data && data.error)) {
+        
         let error = (data && data.error) ? data.error : "Internal Server Error";
-
+        logger.log({level : "error" , message : error}) 
         return res.status(500).send({ error: error })
     }
 
@@ -61,4 +60,34 @@ async function resetPassword(req, res) {
     }
     return res.status(200).send({ data: data.data });
 }
-module.exports = { Register, Login, forgetPassword,resetPassword }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// change password controller
+
+async function changePasswordContro(req,res){
+   let data = await user.changePassword(req.body,req.userdata).catch((err)=>{return {error : err}});
+    if(!data || (data && data.error)){
+        let error = (data && data.error) ? data.error : "internal server error";
+        let status = (data && data.status) ? data.status : 500;
+         return res.status(status).send({error})
+    }
+    return res.status(200).send({data : data.data})
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// logout controller
+
+async function logotController(req,res){
+    let data = await  user.logout(req.userdata.id).catch((err)=>{return {error : err}});
+     if(!data || (data && data.error)){
+        let error = (data && data.error) ? data.error : "internal server error";
+        let status = (data && data.status) ? data.status : 500;
+         return res.status(status).send({error})
+     }
+     return res.status(200).send({data : data.data})
+
+}
+
+
+
+
+module.exports = { Register, Login, forgetPassword,resetPassword, changePasswordContro,logotController}

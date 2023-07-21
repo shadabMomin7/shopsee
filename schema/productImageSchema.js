@@ -9,11 +9,11 @@ ProductImage.init({
                 autoIncrement: true,
                 primaryKey: true
         },
-        p_id: {
+        product_id: {
                 type: DataTypes.INTEGER,
                 allowNull: true
         },
-        image_url: {
+        image_name: {
                 type: DataTypes.STRING,
                 allowNull: false
         },

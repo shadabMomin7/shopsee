@@ -16,6 +16,12 @@ Category.init({
         type: DataTypes.INTEGER,
         allowNull: true
     },
+    is_deleted: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: 0
+    },
+
     created_by: {
         type: DataTypes.INTEGER,
         allowNull: false

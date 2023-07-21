@@ -1,1 +1,5 @@
 node_modules
+combined-error.log
+debug.log
+error.log
+warn.log

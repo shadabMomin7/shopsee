@@ -3,7 +3,7 @@ let fs = require ("fs").promises
 
 async function parseFile(req,res,options= {}){
     // giving options for developer
-    let size = (options.size ) ? options.size : 1000*3;
+    let size = (options.size ) ? options.size : 1024*1024*50;
     let ext = (options.ext) ? options.ext : /jpg|png|avif/ ; 
     let field = (options.field) ? options.field : null;
 

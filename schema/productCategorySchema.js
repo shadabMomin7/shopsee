@@ -1,4 +1,3 @@
-const { date } = require("joi");
 let { sequelizecon, DataTypes, QueryTypes, Model, Op } = require("../init/dbconfig");
 
 class Product_category extends Model { }
@@ -18,6 +17,14 @@ Product_category.init({
         type: DataTypes.INTEGER,
         allowNull: false
     },
+    created_by: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    updated_by: {
+        type: DataTypes.STRING,
+        allowNull: false
+    }
 },
 
     { tableName: "product_category", modelName: "Product_category", sequelize: sequelizecon }

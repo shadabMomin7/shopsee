@@ -15,12 +15,13 @@ async function photoUpload(param,files,userdata){
     let error = (check && check.error) ? check.error : "please provide product Id";
         return {error , status : 400}
     }
+    //
     let not_upload=[];
     let bulkImage=[];
     
     for(let i of files){
 
-        let fileDestination = "E:/shadab project recover/public/upload/";
+    
         let fileName = Date.now() + "-" + Math.round(Math.random()*1E9);
         let ext = i.mimetype.split("/").pop();
         let upload = await file.singleFileUpload(fileDestination + fileName + "." + ext,i.buffer).catch((err)=>{return {error : err}});
@@ -29,8 +30,8 @@ async function photoUpload(param,files,userdata){
             continue;
         }
         bulkImage.push({
-            p_id:param.p_id,
-            image_url:fileName
+            product_id:param.product_id,
+            image_name  :fileName+'.'+ext
         })
     }
 
@@ -47,7 +48,7 @@ async function photoUpload(param,files,userdata){
 //joi validation upload image (Api)
 async function checkPhotoUpload(param){
     let schema = joi.object({
-        p_id : joi.number().required()
+        product_id : joi.number().required()
     })
     let valid = await schema.validateAsync(param,{abortEarly : false}).catch((err)=>{return {error : err}});
      if(!valid || (valid && valid.error)){
@@ -71,24 +72,20 @@ async function deletePhoto(param){
         return {error , status : 400}
      }
      //find product || if not found return 
-     let findProduct = await ProductImage.findOne({where : {p_id : param.p_id , id : param.id}}).catch((err)=>{return {error : err}});
-      if(!findProduct){
+     let findProduct = await ProductImage.findOne({where : {product_id : param.product_id , id : param.id}}).catch((err)=>{return {error : err}});
+     if(!findProduct || findProduct.error){
         return {error : "product image not found" , status : 404}
       }
-       // 
-      
-      
-       // delete file from system 
-      let fsUnlink = await fs.fsUnlink(fileDestination + findProduct.image_url).catch((err)=>{return {error : err}});
-       if(!fsUnlink || (fsUnlink && fsUnlink.error)){
+    // delete files from system 
+      let fsUnlink = await fs.unlink(fileDestination + findProduct.image_name).catch((err)=>{return {error : err}});
+       if(fsUnlink && fsUnlink.error){
         let error = (fsUnlink && fsUnlink.error) ? fsUnlink.error : "unable to delete photo | internal server error";
          return {error, status : 500}
        }
        // delete from data base
-       let removeFromDb = await ProductImage.destroy({where : {id : findProduct.id}}).catch ((err)=>{return {error : err}});
-        if(! removeFromDb || (removeFromDb && removeFromDb.error)){
-            let error = (removeFromDb && removeFromDb.error) ? removeFromDb.error : " error on deleting from database | internal server error";
-             return {error, status : 500}
+       let removeFromDb = await ProductImage.destroy({where : {id : param.id}}).catch ((err)=>{return {error : err}});
+        if(removeFromDb.error){
+            return {error : " error on deleting from database | internal server error", status : 500}
         }
         // return deleted msg
         return {data : "product deleted successfully"}
@@ -99,7 +96,7 @@ async function deletePhoto(param){
 async function checkDeletePhoto(param){
     let schema = joi.object({
                              id : joi.number().required(),
-                             p_id : joi.number().required
+                             product_id: joi.number()
     })
 
     let valid = await schema.validateAsync(param,{abortEarly : false}).catch((err)=>{return {error : err}});

@@ -1,0 +1,297 @@
+{"date":1688573110654,"level":"info","message":"3001 running on"}
+{"date":1688573115052,"level":"error","message":"Cors-Error: from domain undefined"}
+{"date":1688573115053,"level":"error","message":"/api/v1/product/view/:ele"}
+{"data":{},"date":1688573115053,"level":"error","message":{}}
+{"date":1688573115054,"level":"error"}
+{"date":1688573141468,"level":"error","message":"Cors-Error: from domain undefined"}
+{"date":1688573141469,"level":"error","message":"/api/v1/product/view/:ele"}
+{"data":{},"date":1688573141469,"level":"error","message":{}}
+{"date":1688573141469,"level":"error"}
+{"date":1688573169386,"level":"info","message":"3001 running on"}
+{"date":1688573177883,"level":"error","message":"Cors-Error: from domain undefined"}
+{"date":1688573177884,"level":"error","message":"/api/v1/product/view/:ele"}
+{"data":{},"date":1688573177884,"level":"error","message":{}}
+{"date":1688573177885,"level":"error"}
+{"date":1688573388084,"level":"error","message":"Cors-Error: from domain undefined"}
+{"date":1688573388084,"level":"error","message":"/api/v1/product/view/:ProductName%20=%20ele"}
+{"data":{},"date":1688573388085,"level":"error","message":{}}
+{"date":1688573388085,"level":"error"}
+{"date":1688573445900,"level":"error","message":"Cors-Error: from domain undefined"}
+{"date":1688573445900,"level":"error","message":"/api/v1/product/view/ele"}
+{"data":{},"date":1688573445900,"level":"error","message":{}}
+{"date":1688573445900,"level":"error"}
+{"date":1688573673081,"level":"info","message":"3001 running on"}
+{"date":1688573681058,"level":"error","message":"Cors-Error: from domain undefined"}
+{"date":1688573681059,"level":"error","message":"/api/v1/product/view/ele"}
+{"data":{},"date":1688573681059,"level":"error","message":{}}
+{"date":1688573681059,"level":"error"}
+{"date":1688573732781,"level":"error","message":"Cors-Error: from domain undefined"}
+{"date":1688573732782,"level":"error","message":"/api/v1/product/viewSingle/:ProductName%20"}
+{"data":{},"date":1688573732782,"level":"error","message":{}}
+{"date":1688573732782,"level":"error"}
+{"date":1688573781256,"level":"error","message":"Cors-Error: from domain undefined"}
+{"date":1688573781256,"level":"error","message":"/api/v1/product/viewSingle/:ProductName%20=shoe"}
+{"data":{},"date":1688573781256,"level":"error","message":{}}
+{"date":1688573781256,"level":"error"}
+{"date":1688573786425,"level":"info","message":"3001 running on"}
+{"date":1688573789304,"level":"error","message":"Cors-Error: from domain undefined"}
+{"date":1688573789305,"level":"error","message":"/api/v1/product/viewSingle/:ProductName%20=shoe"}
+{"data":{},"date":1688573789305,"level":"error","message":{}}
+{"date":1688573789305,"level":"error"}
+{"date":1688574051801,"level":"error","message":"Cors-Error: from domain undefined"}
+{"date":1688574051802,"level":"error","message":"/api/v1/product/viewSingle/:ProductName%20=shoe"}
+{"data":{},"date":1688574051802,"level":"error","message":{}}
+{"date":1688574051802,"level":"error"}
+{"date":1688574167647,"level":"info","message":"3001 running on"}
+{"date":1688574172624,"level":"error","message":"Cors-Error: from domain line 7 undefined"}
+{"date":1688574172625,"level":"error","message":"/api/v1/product/viewSingle/:ProductName%20=shoe"}
+{"data":{},"date":1688574172625,"level":"error","message":{}}
+{"date":1688574172625,"level":"error"}
+{"date":1688574355329,"level":"info","message":"3001 running on"}
+{"date":1688574359379,"level":"error","message":"Cors-Error: from domain line 7 undefined"}
+{"date":1688574359380,"level":"error","message":"/api/v1/product/viewSingle/:ProductName%20=shoe"}
+{"data":{},"date":1688574359380,"level":"error","message":{}}
+{"date":1688574359380,"level":"error"}
+{"date":1688641930899,"level":"info","message":"3001 running on"}
+{"date":1688641944505,"level":"error","message":"Cors-Error: from domain line 7 undefined"}
+{"date":1688641944506,"level":"error","message":"/api/v1/product/viewSingle/:ProductName%20=shoe"}
+{"data":{},"date":1688641944506,"level":"error","message":{}}
+{"date":1688641944506,"level":"error"}
+{"date":1688641960641,"level":"info","message":"3001 running on"}
+{"date":1688641963573,"level":"error","message":"Cors-Error: from domain line 7 undefined"}
+{"date":1688641963573,"level":"error","message":"/api/v1/product/viewSingle/:ProductName%20=shoe"}
+{"data":{},"date":1688641963574,"level":"error","message":{}}
+{"date":1688641963574,"level":"error"}
+{"date":1688642118058,"level":"info","message":"3001 running on"}
+{"date":1688642121152,"level":"error","message":"Cors-Error: from domain line 7 undefined"}
+{"date":1688642121152,"level":"error","message":"/api/v1/product/viewSingle/:ProductName%20=shoe"}
+{"data":{},"date":1688642121153,"level":"error","message":{}}
+{"date":1688642121153,"level":"error"}
+{"date":1688642142378,"level":"info","message":"3001 running on"}
+{"date":1688642145786,"level":"error","message":"Cors-Error: from domain line 7 undefined"}
+{"date":1688642145787,"level":"error","message":"/api/v1/product/viewSingle/:ProductName%20=shoe"}
+{"data":{},"date":1688642145788,"level":"error","message":{}}
+{"date":1688642145788,"level":"error"}
+{"date":1688642221070,"level":"info","message":"3001 running on"}
+{"date":1688642224631,"level":"error","message":"Cors-Error: from domain line 7 undefined"}
+{"date":1688642224632,"level":"error","message":"/api/v1/product/viewSingle/:ProductName%20=shoe"}
+{"data":{},"date":1688642224633,"level":"error","message":{}}
+{"date":1688642224633,"level":"error"}
+{"date":1688642305802,"level":"info","message":"3001 running on"}
+{"date":1688642308233,"level":"error","message":"Cors-Error: from domain line 7 undefined"}
+{"date":1688642308234,"level":"error","message":"/api/v1/product/viewSingle/:ProductName%20=shoe"}
+{"data":{},"date":1688642308234,"level":"error","message":{}}
+{"date":1688642308234,"level":"error"}
+{"date":1688642364536,"level":"error","message":"Cors-Error: from domain line 7 undefined"}
+{"date":1688642364536,"level":"error","message":"/api/v1/product/viewSingle/:ProductName%20=shoe"}
+{"data":{},"date":1688642364536,"level":"error","message":{}}
+{"date":1688642364536,"level":"error"}
+{"date":1688642791899,"level":"info","message":"3001 running on"}
+{"date":1688642824382,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1688642824383,"level":"error","message":"/api/v1/product/viewSingle/:ProductName%20=ro"}
+{"data":{},"date":1688642824384,"level":"error","message":{}}
+{"date":1688642824384,"level":"error"}
+{"date":1688642916111,"level":"info","message":"3001 running on"}
+{"date":1688642918847,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1688642918848,"level":"error","message":"/api/v1/product/viewSingle/:ProductName%20=ro"}
+{"data":{},"date":1688642918848,"level":"error","message":{}}
+{"date":1688642918849,"level":"error"}
+{"date":1688643002124,"level":"info","message":"3001 running on"}
+{"date":1688643004904,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1688643004905,"level":"error","message":"/api/v1/product/viewSingle/:ProductName%20=ro"}
+{"data":{},"date":1688643004905,"level":"error","message":{}}
+{"date":1688643004905,"level":"error"}
+{"date":1688643459295,"level":"info","message":"3001 running on"}
+{"date":1688643465783,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1688643465784,"level":"error","message":"/api/v1/product/viewSingle/:ProductName%20=ro"}
+{"data":{},"date":1688643465784,"level":"error","message":{}}
+{"date":1688643465784,"level":"error","message":"error from global error handler middleware line no :6 undefined"}
+{"date":1688643577943,"level":"info","message":"3001 running on"}
+{"date":1688643581543,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1688643581543,"level":"error","message":"/api/v1/product/viewSingle/:ProductName%20=ro"}
+{"data":{},"date":1688643581544,"level":"error","message":{}}
+{"date":1688643581544,"level":"error","message":"error from global error handler middleware line no :6 undefined"}
+{"date":1688644190335,"level":"info","message":"3001 running on"}
+{"date":1688644193737,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1688644193738,"level":"error","message":"/api/v1/product/viewSingle/:ProductName%20=ro"}
+{"data":{},"date":1688644193738,"level":"error","message":{}}
+{"date":1688644193739,"level":"error","message":"error from global error handler middleware line no :6 undefined"}
+{"date":1688644238543,"level":"info","message":"3001 running on"}
+{"date":1688644241436,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1688644241436,"level":"error","message":"/api/v1/product/viewSingle/:ProductName%20=ro"}
+{"data":{},"date":1688644241437,"level":"error","message":{}}
+{"date":1688644241437,"level":"error","message":"error from global error handler middleware line no :6 undefined"}
+{"date":1688644301472,"level":"info","message":"3001 running on"}
+{"date":1688644307071,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1688644307073,"level":"error","message":"/api/v1/product/viewSingle/:ProductName%20=ro"}
+{"data":{},"date":1688644307073,"level":"error","message":{}}
+{"date":1688644307073,"level":"error","message":"error from global error handler middleware line no :6 undefined"}
+{"date":1688669665619,"level":"info","message":"3001 running on"}
+{"date":1688669830174,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain null"}
+{"date":1688669830175,"level":"error","message":"/api/test"}
+{"data":{},"date":1688669830176,"level":"error","message":{}}
+{"date":1688669830176,"level":"error","message":"error from global error handler middleware line no :6 undefined"}
+{"date":1688669830198,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1688669830199,"level":"error","message":"/favicon.ico"}
+{"data":{},"date":1688669830199,"level":"error","message":{}}
+{"date":1688669830199,"level":"error","message":"error from global error handler middleware line no :6 undefined"}
+{"date":1688826614498,"level":"info","message":"3001 running on"}
+{"date":1688826655915,"level":"info","message":"3001 running on"}
+{"date":1688826885789,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1688826885791,"level":"error","message":"/api/v1/product/viewSingle/:ro"}
+{"data":{},"date":1688826885792,"level":"error","message":{}}
+{"date":1688826885793,"level":"error","message":"error from global error handler middleware line no :6 undefined"}
+{"date":1688826893670,"level":"info","message":"3001 running on"}
+{"date":1688826903939,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1688826903940,"level":"error","message":"/api/v1/product/viewSingle/:ro"}
+{"data":{},"date":1688826903942,"level":"error","message":{}}
+{"date":1688826903942,"level":"error","message":"error from global error handler middleware line no :6 undefined"}
+{"date":1688826946308,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1688826946309,"level":"error","message":"/api/v1/product/viewSingle/:"}
+{"data":{},"date":1688826946309,"level":"error","message":{}}
+{"date":1688826946309,"level":"error","message":"error from global error handler middleware line no :6 undefined"}
+{"date":1688827019684,"level":"info","message":"3001 running on"}
+{"date":1688827024795,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1688827024795,"level":"error","message":"/api/v1/product/viewSingle/:"}
+{"data":{},"date":1688827024796,"level":"error","message":{}}
+{"date":1688827024796,"level":"error","message":"error from global error handler middleware line no :6 undefined"}
+{"date":1688827071467,"level":"info","message":"3001 running on"}
+{"date":1688827075258,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1688827075259,"level":"error","message":"/api/v1/product/viewSingle/:"}
+{"data":{},"date":1688827075259,"level":"error","message":{}}
+{"date":1688827075260,"level":"error","message":"error from global error handler middleware line no :6 undefined"}
+{"date":1688827129055,"level":"info","message":"3001 running on"}
+{"date":1688827133166,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1688827133167,"level":"error","message":"/api/v1/product/viewSingle/:"}
+{"data":{},"date":1688827133168,"level":"error","message":{}}
+{"date":1688827133168,"level":"error","message":"error from global error handler middleware line no :6 undefined"}
+{"date":1688827205274,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1688827205275,"level":"error","message":"/api/v1/product/viewSingle/:"}
+{"data":{},"date":1688827205275,"level":"error","message":{}}
+{"date":1688827205276,"level":"error","message":"error from global error handler middleware line no :6 undefined"}
+{"date":1688827394750,"level":"info","message":"3001 running on"}
+{"date":1688827398370,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1688827398371,"level":"error","message":"/api/v1/product/viewSingle/:"}
+{"data":{},"date":1688827398371,"level":"error","message":{}}
+{"date":1688827398371,"level":"error","message":"error from global error handler middleware line no :6 undefined"}
+{"date":1688827571941,"level":"info","message":"3001 running on"}
+{"date":1688827758786,"level":"info","message":"3001 running on"}
+{"date":1688828076943,"level":"info","message":"3001 running on"}
+{"date":1689177358130,"level":"info","message":"3001 running on"}
+{"date":1689177361889,"level":"error","message":"/api/user/v1/Login"}
+{"data":{},"date":1689177361890,"level":"error","message":{}}
+{"date":1689177361890,"level":"error","message":"error from global error handler middleware line no :6 logger.log is not a function"}
+{"date":1689178966744,"level":"info","message":"3001 running on"}
+{"date":1689178970009,"level":"error","message":"Auth error- user permission not found for user undefined"}
+{"date":1689179494490,"level":"info","message":"3001 running on"}
+{"date":1689179524453,"level":"info","message":"3001 running on"}
+{"date":1689179558321,"level":"info","message":"3001 running on"}
+{"date":1689179629041,"level":"info","message":"3001 running on"}
+{"date":1689180036740,"level":"info","message":"3001 running on"}
+{"date":1689180263591,"level":"info","message":"3001 running on"}
+{"date":1689238029088,"level":"info","message":"3001 running on"}
+{"date":1689238146109,"level":"info","message":"3001 running on"}
+{"date":1689238151212,"level":"error","message":"/api/v1/addtocart"}
+{"data":{},"date":1689238151213,"level":"error","message":{}}
+{"date":1689238151213,"level":"error","message":"error from global error handler middleware line no :6 userdata is not defined"}
+{"date":1689239318651,"level":"info","message":"3001 running on"}
+{"date":1689239369121,"level":"info","message":"3001 running on"}
+{"date":1689239667280,"level":"info","message":"3001 running on"}
+{"date":1689239983914,"level":"info","message":"3001 running on"}
+{"date":1689256848685,"level":"info","message":"3001 running on"}
+{"date":1689264524226,"level":"info","message":"3001 running on"}
+{"date":1689264559577,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1689264559578,"level":"error","message":"/api/product/v1/add"}
+{"data":{},"date":1689264559578,"level":"error","message":{}}
+{"date":1689264559578,"level":"error","message":"error from global error handler middleware line no :6 undefined"}
+{"date":1689264691908,"level":"info","message":"3001 running on"}
+{"date":1689268115060,"level":"info","message":"3001 running on"}
+{"date":1689268122371,"level":"info","message":"3001 running on"}
+{"date":1689326058153,"level":"info","message":"3001 running on"}
+{"date":1689326895946,"level":"info","message":"3001 running on"}
+{"date":1689327035566,"level":"info","message":"3001 running on"}
+{"date":1689327104222,"level":"info","message":"3001 running on"}
+{"date":1689327263835,"level":"info","message":"3001 running on"}
+{"date":1689327422696,"level":"info","message":"3001 running on"}
+{"date":1689327447088,"level":"info","message":"3001 running on"}
+{"date":1689327549270,"level":"info","message":"3001 running on"}
+{"date":1689327691467,"level":"error","message":" from cart"}
+{"date":1689327696899,"level":"error","message":" from cart"}
+{"date":1689327751747,"level":"info","message":"3001 running on"}
+{"date":1689327800812,"level":"error","message":" from cart"}
+{"date":1689327900805,"level":"info","message":"3001 running on"}
+{"date":1689327936919,"level":"info","message":"3001 running on"}
+{"date":1689328017874,"level":"info","message":"3001 running on"}
+{"date":1689335084517,"level":"info","message":"3001 running on"}
+{"date":1689335856567,"level":"info","message":"3001 running on"}
+{"date":1689335925583,"level":"info","message":"3001 running on"}
+{"date":1689342827867,"level":"info","message":"3001 running on"}
+{"date":1689342925472,"level":"error","message":"/api/v1/removeCart/2"}
+{"data":{},"date":1689342925474,"level":"error","message":{}}
+{"date":1689342925475,"level":"error","message":"error from global error handler middleware line no :6 userdata is not defined"}
+{"date":1689342990761,"level":"info","message":"3001 running on"}
+{"date":1689342994186,"level":"error","message":"/api/v1/removeCart/2"}
+{"data":{},"date":1689342994186,"level":"error","message":{}}
+{"date":1689342994187,"level":"error","message":"error from global error handler middleware line no :6 userdata is not defined"}
+{"date":1689343177551,"level":"info","message":"3001 running on"}
+{"date":1689343183531,"level":"error","message":"/api/v1/removeCart/2"}
+{"data":{},"date":1689343183531,"level":"error","message":{}}
+{"date":1689343183532,"level":"error","message":"error from global error handler middleware line no :6 userdata is not defined"}
+{"date":1689343210486,"level":"info","message":"3001 running on"}
+{"date":1689343272584,"level":"info","message":"3001 running on"}
+{"date":1689343318594,"level":"info","message":"3001 running on"}
+{"date":1689593701534,"level":"info","message":"3001 running on"}
+{"date":1689593724028,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1689593724029,"level":"error","message":"/api/v1/viewCart/28"}
+{"data":{},"date":1689593724029,"level":"error","message":{}}
+{"date":1689593724029,"level":"error","message":"error from global error handler middleware line no :6 undefined"}
+{"date":1689593751596,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1689593751597,"level":"error","message":"/api/v1/viewCart/28?Origin=http://abc.com"}
+{"data":{"Origin":"http://abc.com"},"date":1689593751597,"level":"error","message":{}}
+{"date":1689593751597,"level":"error","message":"error from global error handler middleware line no :6 undefined"}
+{"date":1689593754555,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1689593754555,"level":"error","message":"/api/v1/viewCart/28?Origin=http://abc.com"}
+{"data":{"Origin":"http://abc.com"},"date":1689593754555,"level":"error","message":{}}
+{"date":1689593754555,"level":"error","message":"error from global error handler middleware line no :6 undefined"}
+{"date":1689593757183,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1689593757184,"level":"error","message":"/api/v1/viewCart/28?Origin=http://abc.com"}
+{"data":{"Origin":"http://abc.com"},"date":1689593757184,"level":"error","message":{}}
+{"date":1689593757184,"level":"error","message":"error from global error handler middleware line no :6 undefined"}
+{"date":1689593776578,"level":"info","message":"3001 running on"}
+{"date":1689593780278,"level":"error","message":" :Cors-Error: from Cors Middleware line No:7  domain undefined"}
+{"date":1689593780278,"level":"error","message":"/api/v1/viewCart/28?Origin=http://abc.com"}
+{"data":{"Origin":"http://abc.com"},"date":1689593780279,"level":"error","message":{}}
+{"date":1689593780279,"level":"error","message":"error from global error handler middleware line no :6 undefined"}
+{"date":1689679077776,"level":"info","message":"3001 running on"}
+{"date":1689679116565,"level":"info","message":"3001 running on"}
+{"date":1689679160515,"level":"info","message":"3001 running on"}
+{"date":1689679548925,"level":"info","message":"3001 running on"}
+{"date":1689679625173,"level":"info","message":"3001 running on"}
+{"date":1689679702865,"level":"info","message":"3001 running on"}
+{"date":1689679750269,"level":"info","message":"3001 running on"}
+{"date":1689679897484,"level":"info","message":"3001 running on"}
+{"date":1689679930037,"level":"info","message":"3001 running on"}
+{"date":1689680071353,"level":"info","message":"3001 running on"}
+{"date":1689680090892,"level":"error","message":"/api/category/v1/update/22"}
+{"data":{},"date":1689680090892,"level":"error","message":{}}
+{"date":1689680090893,"level":"error","message":"error from global error handler middleware line no :6 Unexpected token } in JSON at position 45"}
+{"date":1689680208312,"level":"info","message":"3001 running on"}
+{"date":1689680244975,"level":"info","message":"3001 running on"}
+{"date":1689680707780,"level":"info","message":"3001 running on"}
+{"date":1689680744992,"level":"error","message":"/api/category/v1/update/22"}
+{"data":{},"date":1689680744992,"level":"error","message":{}}
+{"date":1689680744993,"level":"error","message":"error from global error handler middleware line no :6 Unexpected token } in JSON at position 45"}
+{"date":1689680921560,"level":"info","message":"3001 running on"}
+{"date":1689680978696,"level":"error","message":"/api/category/v1/update/22"}
+{"data":{},"date":1689680978696,"level":"error","message":{}}
+{"date":1689680978697,"level":"error","message":"error from global error handler middleware line no :6 Unexpected token } in JSON at position 55"}
+{"date":1689681170609,"level":"info","message":"3001 running on"}
+{"date":1689681175276,"level":"error","message":"/api/category/v1/update/22"}
+{"data":{},"date":1689681175277,"level":"error","message":{}}
+{"date":1689681175277,"level":"error","message":"error from global error handler middleware line no :6 Unexpected token } in JSON at position 55"}
+{"date":1689681842211,"level":"info","message":"3001 running on"}
+{"date":1689681854017,"level":"error","message":"/api/category/v1/update/22"}
+{"data":{},"date":1689681854018,"level":"error","message":{}}
+{"date":1689681854018,"level":"error","message":"error from global error handler middleware line no :6 Unexpected token } in JSON at position 55"}
+{"date":1689682260420,"level":"info","message":"3001 running on"}
+{"date":1689682583163,"level":"info","message":"3001 running on"}

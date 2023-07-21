@@ -7,11 +7,11 @@ let { route } = require("./routes");
 let config = require("config");
 let port = config.get("port")
 let app = express();
+let {logger} = require('./helper/log');
 
 //global middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.use(cors({ origin: corsconfig })); 
 app.use(route);
 
@@ -23,5 +23,5 @@ app.use(globalErrorHandler);
 
 
 //server creation 
-app.listen(port, () => { console.log(`${port} running on`) });
+app.listen(port, () => { logger('info',`${port} running on`) });
  

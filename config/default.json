@@ -1,37 +1,54 @@
 {
     "port": "3001",
 
-    "FilesPath" : "E:/shadab project recover/public/upload/",
+    "FilesPath": "E:/shadab project recover/public/upload/",
 
     "url": {
-
         "auth": {
+            
             "Register": "/api/user/v1/Register",
             "Login": "/api/user/v1/Login",
             "forget": "/api/user/v1/forgetPassword",
-            "reset": "/api/user/v1/resetPassword"
+            "reset": "/api/user/v1/resetPassword",
+            "changePassword" : "/api/v1/user/changePassword",
+            "logout" : "/api/v1/user/logout"
         },
 
         "category": {
+
             "add": "/api/category/v1/add",
-            "update": "/api/category/v1/update",
-            "viewall": "/api/category/v1/viewall"
+            "update": "/api/category/v1/update/:id",
+            "viewall": "/api/category/v1/viewall",
+            "delete" : "/api/v1/category/delete/:id",
+            "restore" : "/api/v1/category/restore/:id",
+            "view" : "/api/v1/category/view/:id"
         },
 
-        "product":{
-            "add":"/api/product/v1/add",
-            "update":"/api/product/v1/update",
-            "assign":"/api/product/v1/assign",
-            "viewall" : "/api/v1/product/viewall",
-            "product_upload_image" : "/api/product/v1/upload",
-            "product_image_delete" : "/api/v1/product/delete"
+        "product": {
 
+            "add": "/api/product/v1/add",
+            "update": "/api/product/v1/update",
+            "assign": "/api/product/v1/assign",
+            "viewall": "/api/v1/product/viewall",
+            "product_upload_image": "/api/product/v1/upload",
+            "product_image_delete": "/api/v1/product/delete",
+            "product_delete" : "/api/v1/product/delete",
+            "restore_product" : "/api/v1/product/restore",
+            "viewSingle" : "/api/v1/product/viewSingle/:ProductName"
+        },
+
+        "addToCart": {
+            "add": "/api/v1/addtocart" ,  
+            "removeCart" : "/api/v1/removeCart/:productId",
+            "viewCart" : "/api/v1/viewCart/:UserId" 
         },
 
         "error": {
             "errorhandling": "/api/error/v1/errorhandling"
         },
-
-        "testing" : {"demo" : "/upload"}
+        
+        "testing": {
+            "demo": "/upload"
+        }
     }
 }
