@@ -30,7 +30,7 @@ User.init({
         allowNull:true
     }
 },
-    //2 parameter configurations
+    //2 parameter  table configurations
     { tableName: "user", modelName: "User", sequelize: sequelizecon }
 );
 
